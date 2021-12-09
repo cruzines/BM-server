@@ -9,8 +9,8 @@ let BidsModel = require('../models/Bids.model')
 let ArtModel = require('../models/Art.model')
 
 router.post('/signup', (req, res) => {
-    const {userName, firstName,lastName, type, email, password } = req.body;
-    console.log(userName, email, password);
+    const {firstName,lastName, email, password } = req.body;
+    console.log(email, password);
  
     // -----SERVER SIDE VALIDATION ----------
     /* 
@@ -41,7 +41,7 @@ router.post('/signup', (req, res) => {
     // creating a salt 
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(password, salt);
-    UserModel.create({userName, firstName,lastName, type, email, passwordHash: hash})
+    UserModel.create({firstName,lastName, email, passwordHash: hash})
       .then((user) => {
         // ensuring that we don't share the hash as well with the user
         user.passwordHash = "***";
