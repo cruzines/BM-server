@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 
-let UserSchema = new Schema({git addEventListener.
+let UserSchema = new Schema({
   firstName: String,
   lastName: String, 
   email: {
