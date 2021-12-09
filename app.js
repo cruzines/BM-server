@@ -37,11 +37,11 @@ app.use(session({
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
-const authRoutes = require('./routes/auth.routes');
-app.use("/api", authRoutes);
-
 const indexRoutes = require('./routes/index');
 app.use('/api', indexRoutes);
+
+const authRoutes = require('./routes/auth.routes');
+app.use("/api", authRoutes);
 
 const BidRoutes = require('./routes/bidMasters.route');
 app.use('/api', BidRoutes);
