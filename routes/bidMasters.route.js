@@ -5,7 +5,7 @@ const axios = require("axios");
 let BidsModel = require('../models/Bids.model')
 let ArtModel = require('../models/Art.model')
 
-
+/*
 router.get('/liveauction', (req, res) => {
     axios.get('https://api.harvardartmuseums.org/exhibition?after=1975&before=2000&apikey=e178f955-e1d9-440a-bcb2-c9c66b3e9277', {
         params: {
@@ -17,9 +17,9 @@ router.get('/liveauction', (req, res) => {
       
        
     });
+*/
 
-
-router.get('/futureauction', (req, res) => {
+router.get('/art', (req, res) => {
     ArtModel.find()
          .then((art) => {
               res.status(200).json(art)
@@ -32,7 +32,7 @@ router.get('/futureauction', (req, res) => {
          })         
 })
 
-router.get('/futureauction/:artId', (req, res) => {
+router.get('/auctiondetail/:artId', (req, res) => {
     ArtModel.findById(req.params.artId)
      .then((response) => {
           res.status(200).json(response)
@@ -44,6 +44,36 @@ router.get('/futureauction/:artId', (req, res) => {
           })
      }) 
 })
+
+const isLoggedIn = (req, res, next) => {
+     if (req.session.loggedInUser) {
+         //invokes the next available function
+         next()
+     }
+     else {
+         res.redirect('/signin')
+     }
+   }
+
+
+
+router.post('/sellform/:id',isLoggedIn,  (req, res) => {  
+     const {artist, title, year, image, price} = req.body;
+     console.log(req.body)
+     let userId = req.params.id
+
+     ArtModel.create({artist, title, year, image, price, seller: userId})
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong',
+                     message: err
+                })
+           })  
+ })
+
 
 
 
