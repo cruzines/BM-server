@@ -1,10 +1,6 @@
 # BID MASTERS
 
-<<<<<<< HEAD
-This project was made by Ines Cruz, Ricardo Nunes and Maria Farran Colell 
-=======
-This project was made by Inês Cruz, Ricardo Nunes and Maria Farran Colell 
->>>>>>> e1ff63feb93e1aeed0d9f002196536525cdb2e27
+This project was created by Inês Cruz, Maria Farran Colell and Ricardo Nunes
 
 ## Description
 
