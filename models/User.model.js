@@ -6,11 +6,11 @@ let UserSchema = new Schema({
   lastName: String, 
   email: {
     type: String,
-    required: true
+    required: false
   },
   passwordHash: {
     type: String,
-    required: true
+    required: false
   }
 })
 

@@ -25,7 +25,7 @@ app.use(session({
     maxAge: 1000 * 24* 60 * 60 // your cookie will be cleared after these seconds
   },
   store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/BidMasters",
+    mongoUrl: process.env.MONGODB_URI || "mongodb://localhost/BidMastersP3",
     // Time to Live for sessions in DB. After that time it will delete it!
     ttl: 24* 60 * 60 // your session will be cleared after these seconds
   })
@@ -45,6 +45,9 @@ app.use("/api", authRoutes);
 
 const BidRoutes = require('./routes/bidMasters.route');
 app.use('/api', BidRoutes);
+
+const fileUploadRoutes = require('./routes/file-upload.routes')
+app.use("/api", fileUploadRoutes);
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
