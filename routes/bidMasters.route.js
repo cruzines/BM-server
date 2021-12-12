@@ -1,7 +1,5 @@
 const express = require('express')
-const router = express.Router()
-const mongoose = require("mongoose");
-const axios = require("axios");
+const router = express.Router();
 let BidsModel = require('../models/Bids.model')
 let ArtModel = require('../models/Art.model')
 
@@ -45,24 +43,14 @@ router.get('/auctiondetail/:artId', (req, res) => {
      }) 
 })
 
-const isLoggedIn = (req, res, next) => {
-     if (req.session.loggedInUser) {
-         //invokes the next available function
-         next()
-     }
-     else {
-         res.redirect('/signin')
-     }
-   }
 
 
-
-router.post('/sellform/:id',isLoggedIn,  (req, res) => {  
+router.post('/sellform',  (req, res) => {  
      const {artist, title, year, image, price} = req.body;
      console.log(req.body)
-     let userId = req.params.id
+     
 
-     ArtModel.create({artist, title, year, image, price, seller: userId})
+     ArtModel.create({artist, title, year, image, price})
            .then((response) => {
                 res.status(200).json(response)
            })

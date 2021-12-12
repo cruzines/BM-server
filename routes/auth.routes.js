@@ -41,6 +41,7 @@ router.post('/signup', (req, res) => {
     // creating a salt 
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(password, salt);
+    
     UserModel.create({firstName, lastName, email, passwordHash: hash})
       .then((user) => {
         // ensuring that we don't share the hash as well with the user
@@ -66,6 +67,7 @@ router.post('/signup', (req, res) => {
 // will handle all POST requests to http:localhost:5005/api/signin
 router.post('/signin', (req, res) => {
     const {email, password } = req.body;
+    console.log (email, password)
 
     // -----SERVER SIDE VALIDATION ----------
     /*
