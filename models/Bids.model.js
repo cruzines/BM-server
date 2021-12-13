@@ -21,7 +21,7 @@ const bidsSchema = new mongoose.Schema({
     ref: "art",
     type: Schema.Types.ObjectId
   }
-  });
+  }, { timestamps: true });
 
 const BidsModel = model("bids", bidsSchema);
 
