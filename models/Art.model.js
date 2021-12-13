@@ -13,11 +13,7 @@ let ArtSchema = new mongoose.Schema({
     price: Number,
     days: Number,
     
-    seller: [{ 
-        type: Schema.Types.ObjectId, 
-        ref: "user" 
-    }],
-    buyer: [{ 
+    user: [{ 
         type: Schema.Types.ObjectId, 
         ref: "user" 
     }],
