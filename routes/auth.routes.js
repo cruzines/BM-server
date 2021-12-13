@@ -42,23 +42,7 @@ router.post('/signin', (req, res) => {
     const {email, password } = req.body;
     console.log (email, password)
 
-    // -----SERVER SIDE VALIDATION ----------
     
-/*     if ( !email || !password) {
-        res.status(500).json({
-            error: 'Please enter email and password',
-       })
-      return;  
-    }
-    const myRegex = new RegExp(/^[a-z0-9](?!.*?[^\na-z0-9]{2})[^\s@]+@[^\s@]+\.[^\s@]+[a-z0-9]$/);
-    if (!myRegex.test(email)) {
-        res.status(500).json({
-            error: 'Email format not correct',
-        })
-        return;  
-    } */
-    
-  
     // Find if the user exists in the database 
     UserModel.findOne({email})
       .then((userData) => {
@@ -97,7 +81,6 @@ router.post('/logout', (req, res) => {
     res.status(204).json({});
 })
 
-
 // middleware to check if user is loggedIn
 const isLoggedIn = (req, res, next) => {  
   if (req.session.loggedInUser) {
@@ -112,7 +95,6 @@ const isLoggedIn = (req, res, next) => {
   };
 };
 
-
 // THIS IS A PROTECTED ROUTE
 // will handle all get requests to http:localhost:5005/api/user
 router.get("/user", isLoggedIn, (req, res, next) => {
@@ -120,5 +102,3 @@ router.get("/user", isLoggedIn, (req, res, next) => {
 });
 
 module.exports = router;
-
-
