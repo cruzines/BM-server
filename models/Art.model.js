@@ -11,6 +11,8 @@ let ArtSchema = new mongoose.Schema({
     year: String,
     image: String,
     price: Number,
+    days: Number,
+    
     seller: [{ 
         type: Schema.Types.ObjectId, 
         ref: "user" 
@@ -22,8 +24,9 @@ let ArtSchema = new mongoose.Schema({
     bids: [{ 
         type: Schema.Types.ObjectId, 
         ref: "bids" 
-    }],  
-})
+    }],
+
+},{ timestamps: true } )
 
 let ArtModel = mongoose.model('art', ArtSchema)
 

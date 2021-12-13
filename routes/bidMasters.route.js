@@ -44,13 +44,49 @@ router.get('/auctiondetail/:artId', (req, res) => {
 })
 
 
+router.post('/auctiondetail/:artId', (req, res) => {
+     const {bid} = req.body;
+     const {artId} = req.params
+
+     BidsModel.create({bid, artId})
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong here toooo',
+                     message: err
+                })
+           })  
+ })
+
+
 
 router.post('/sellform',  (req, res) => {  
-     const {artist, title, year, image, price} = req.body;
+     const {artist, title, year, image, price, days} = req.body;
+     console.log(req.body)
+     
+     
+
+     ArtModel.create({artist, title, year, image, price, days})
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong',
+                     message: err
+                })
+           })  
+ })
+
+
+ router.post('/sellform',  (req, res) => {  
+     const {artist, title, year, image, price, days} = req.body;
      console.log(req.body)
      
 
-     ArtModel.create({artist, title, year, image, price})
+     ArtModel.create({artist, title, year, image, price, days})
            .then((response) => {
                 res.status(200).json(response)
            })
@@ -66,5 +102,10 @@ router.post('/sellform',  (req, res) => {
 
 
 
-
 module.exports = router;
+
+router.get('/liveauction', (req, res) => {
+    
+       
+        
+     });
