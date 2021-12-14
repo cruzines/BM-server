@@ -3,19 +3,7 @@ const router = express.Router();
 let BidsModel = require('../models/Bids.model')
 let ArtModel = require('../models/Art.model')
 
-/*
-router.get('/liveauction', (req, res) => {
-    axios.get('https://api.harvardartmuseums.org/exhibition?after=1975&before=2000&apikey=e178f955-e1d9-440a-bcb2-c9c66b3e9277', {
-        params: {
-            
-            title: "dog",
-            fields: "objectnumber,title,dated",
-        }
-      });
-      
-       
-    });
-*/
+
 
 router.get('/art', (req, res) => {
     ArtModel.find()
@@ -54,7 +42,7 @@ router.post('/auctiondetail/:artId', (req, res) => {
            })
            .catch((err) => {
                 res.status(500).json({
-                     error: 'Something went wrong here toooo',
+                     error: 'Something went wrong here to',
                      message: err
                 })
            })  
@@ -78,6 +66,22 @@ router.post('/sellform',  (req, res) => {
                      message: err
                 })
            })  
+ })
+
+ 
+ router.get('/user/added/:userId', (req, res) => {
+    //const {user} = req.params
+     //console.log(user)
+     ArtModel.findById(req.params.userId)
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong',
+                     message: err
+                })
+           }) 
  })
 
 

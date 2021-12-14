@@ -30,7 +30,7 @@ router.post('/signup', (req, res) => {
         } 
         else {
           res.status(500).json({
-            errorMessage: 'Something went wrong! Go to sleep!',
+            errorMessage: 'Something went wrong!',
             message: err,
           });
         }
