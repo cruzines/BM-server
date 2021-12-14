@@ -54,7 +54,7 @@ router.post('/auctiondetail/:artId', (req, res) => {
            })
            .catch((err) => {
                 res.status(500).json({
-                     error: 'Something went wrong here toooo',
+                     error: 'Something went wrong here to',
                      message: err
                 })
            })  
