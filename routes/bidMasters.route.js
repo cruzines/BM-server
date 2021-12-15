@@ -48,7 +48,20 @@ router.post('/auctiondetail/:artId', (req, res) => {
            })  
  })
 
-
+ router.get('/bids', (req, res) => {
+      console.log ('hello Josh')
+     BidsModel.find()
+      .then((response) => {
+           console.log(response)
+           res.status(200).json(response)
+      })
+      .catch((err) => {
+           res.status(500).json({
+                error: 'There should be something here ??',
+                message: err
+           })
+      }) 
+ })
 
 router.post('/sellform',  (req, res) => {  
      const {artist, title, year, image, price, days, user} = req.body;
