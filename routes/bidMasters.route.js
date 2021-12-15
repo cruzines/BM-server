@@ -85,6 +85,23 @@ router.post('/sellform',  (req, res) => {
  })
 
 
+ router.patch('/user/added/edit/:artId', (req, res) => {
+    let id = req.params.id
+     const {artist, title, year,image, price, days} = req.body;
+     ArtModel.findByIdAndUpdate(id, {$set: {artist, title, year,image, price, days}}, {new: true})
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong',
+                     message: err
+                })
+           }) 
+ })
+
+
+
 
 module.exports = router;
 
