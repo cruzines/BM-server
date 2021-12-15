@@ -99,10 +99,14 @@ router.post('/sellform',  (req, res) => {
 
 
  router.patch('/user/added/edit/:artId', (req, res) => {
-    let id = req.params.id
+      console.log('I am alive')
+      
+    let id = req.params.artId
+    console.log(req.body , id)
      const {artist, title, year,image, price, days} = req.body;
-     ArtModel.findByIdAndUpdate(id, {$set: {artist, title, year,image, price, days}}, {new: true})
+     ArtModel.findByIdAndUpdate(id, {$set: {artist: artist, title: title, year: year,image: image, price: price, days: days}}, {new: true})
            .then((response) => {
+                console.log('sucess')
                 res.status(200).json(response)
            })
            .catch((err) => {
