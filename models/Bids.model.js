@@ -10,10 +10,6 @@ const bidsSchema = new mongoose.Schema({
       type: Date,
       default: Date.now
     },
-    bid: {
-        type: String,
-        
-  },
   user: {
     ref: "user",
     type: Schema.Types.ObjectId

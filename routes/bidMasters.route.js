@@ -12,7 +12,7 @@ router.get('/art', (req, res) => {
          })
          .catch((err) => {
               res.status(500).json({
-                   error: 'There should be something here ??',
+                   error: 'Something went wrong',
                    message: err
               })
          })         
@@ -25,7 +25,7 @@ router.get('/auctiondetail/:artId', (req, res) => {
      })
      .catch((err) => {
           res.status(500).json({
-               error: 'There should be something here ??',
+               error: 'Something went wrong',
                message: err
           })
      }) 
@@ -42,7 +42,7 @@ router.post('/auctiondetail/:artId', (req, res) => {
            })
            .catch((err) => {
                 res.status(500).json({
-                     error: 'Something went wrong here to',
+                     error: 'Something went wrong',
                      message: err
                 })
            })  
@@ -57,7 +57,7 @@ router.post('/auctiondetail/:artId', (req, res) => {
       })
       .catch((err) => {
            res.status(500).json({
-                error: 'There should be something here ??',
+                error: 'Something went wrong',
                 message: err
            })
       }) 
