@@ -6,7 +6,6 @@ require("./User.model")
 require("./Bids.model")
 
 let ArtSchema = new mongoose.Schema({
-    user: String,
     artist: String,
     title: String,
     year: String,
@@ -14,7 +13,7 @@ let ArtSchema = new mongoose.Schema({
     price: Number,
     days: Number,
     
-    userId: [{ 
+    user: [{ 
         type: Schema.Types.ObjectId, 
         ref: "user" 
     }],
