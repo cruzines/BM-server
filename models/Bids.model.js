@@ -5,11 +5,11 @@ require("./Art.model")
 require("./User.model")
 
 const bidsSchema = new mongoose.Schema({
-    userId: String,
     createdAt: {
       type: Date,
       default: Date.now
     },
+    bid: Number,
   user: {
     ref: "user",
     type: Schema.Types.ObjectId
