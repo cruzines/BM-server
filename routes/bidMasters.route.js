@@ -36,13 +36,23 @@ router.post('/auctiondetail/:artId', (req, res) => {
      const {bid, userId} = req.body;
      const {artId} = req.params
      console.log(bid, userId)
-     BidsModel.create({bid, artId, userId})
+     BidsModel.create({bid, artId, user:userId})
            .then((response) => {
-                res.status(200).json(response)
+               let newBid = response 
+               ArtModel.findById(artId)
+                .then((response)=> {
+                    let art = response
+                    art.bids.push(newBid)
+                    art.save().then((response) =>{
+                         res.status(200).json(response)
+                         console.log(response)
+                    })
+                })
+               
            })
            .catch((err) => {
                 res.status(500).json({
-                     error: 'Something went wrong here to',
+                     error: 'Something went wrong',
                      message: err
                 })
            })  
