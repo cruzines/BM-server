@@ -117,7 +117,19 @@ router.post('/sellform',  (req, res) => {
            }) 
  })
 
- 
+ router.delete('/art/:id', (req, res) => {
+     ArtModel.findByIdAndDelete(req.params.id)
+           .then((response) => {
+                res.status(200).json(response)
+           })
+           .catch((err) => {
+                res.status(500).json({
+                     error: 'Something went wrong',
+                     message: err
+                })
+           })  
+ })
+
 
 module.exports = router;
 
